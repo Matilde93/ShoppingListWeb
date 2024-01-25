@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron text-center">
+            <h1>Shopping List</h1>
+        </div>
+
+        <div class="container">
+            <div v-if="error" style="color: red">{{error}}</div>
+
+            <table id="table" v-if="items.length" class="table table-responsive-sm">
+                <thead>
+                    <th v-on:click="SortByName()">Name</th>
+                    <th v-on:click="SortByQuantityAscending()">Quantity</th>
+                    <th>Unit Type</th>
+                    <th></th>
+                </thead>
+                <tr v-for="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.unitType}}</td>
+                    <td><button class="btn btn-danger" id="deleteButton"
+                            v-on:click="DeleteItem(item.id)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td><input v-model="name" type="text" placeholder="Name" id="name" class="form-control"></td>
+                    <td><input v-model.number="quantity" type="number" placeholder="Quantity" id="quantity"
+                            class="form-control"></td>
+                    <td><input v-model="unitType" type="text" placeholder="Unit Type" id="unitType"
+                            class="form-control"></td>
+                    <td><button id="addButton" class="btn btn bg-success" v-on:click="AddItem(name, quantity, unitType)">Add
+                            Item</button></td>
+                </tr>
+            </table>
+            <div v-else style="font-style: italic">No such item</div>
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!--DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <h1 class="jumbotron text-center">Shopping List</h1>
+
+    <div id="categoryTables" class="container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html-->
